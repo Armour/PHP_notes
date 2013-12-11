@@ -1,5 +1,3 @@
-sth_about_PHP
-=============
 <?php
 	var_dump($x);  
 	//returns the data type and value of variables.
@@ -115,4 +113,5 @@ sth_about_PHP
 	filter_var_array()	//- Filter several variables with the same or different filters
 	filter_input()	//- Get one input variable and filter it
 	filter_input_array()	//- Get several input variables and filter them with the same or different filters
+
 ?>
