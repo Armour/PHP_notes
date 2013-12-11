@@ -113,5 +113,33 @@
 	filter_var_array()	//- Filter several variables with the same or different filters
 	filter_input()	//- Get one input variable and filter it
 	filter_input_array()	//- Get several input variables and filter them with the same or different filters
+	filter_has_var()	//- Checks if a variable of a specified input type exist
 
+	Using Filter Callback:
+		function convertSpace($string)
+		{
+			return str_replace("_", " ", $string);
+		}
+		$string = "Peter_is_a_great_guy!";
+		echo filter_var($string, FILTER_CALLBACK, array("options"=>"convertSpace"));
+
+
+	$con=mysqli_connect("example.com","peter","abc123","my_db");	// Create connection	
+	if (mysqli_connect_errno())
+	{
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();	// Check connection
+	}
+	$sql="...";  // SQL sth
+	$result = mysqli_query($con,$sql);	// Execute query
+	$row = mysqli_fetch_array($result));	//Get the select results
+	mysqli_close($con);		// Close the connection 
+
+	$conn=odbc_connect('northwind','','');	//creates a connection to a DSN called northwind, with no username and no password
+	$sql="...";	// SQL sth
+	$rs=odbc_exec($conn,$sql);	//execute sql
+	odbc_fetch_row($rs)	//used to return records from the result-set.
+						// This function returns true if it is able to return rows, otherwise false.
+	$compname=odbc_result($rs,1);	//The code line below returns the value of the first field from the record:
+	$compname=odbc_result($rs,"CompanyName");	//The code line below returns the value of a field called "CompanyName":
+	odbc_close($conn);	// used to close an ODBC connection.
 ?>
