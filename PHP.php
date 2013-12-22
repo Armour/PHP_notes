@@ -1,6 +1,19 @@
 <?php
+	print_r($x)
+	//returns the value of variables.
+
 	var_dump($x);  
 	//returns the data type and value of variables.
+
+	trim(str)	// returns a string with whitespace stripped from the beginning and end of str.
+	ltrim(str)	// returns a string with whitespace stripped from the beginning of str.
+	rtrim(str)	// returns a string with whitespace stripped from the end of str.  
+
+	strtolower(str)	//Returns string with all alphabetic characters converted to lowercase.
+	strtoupper(str) //Returns string with all alphabetic characters converted to uppercase.
+
+	ucfirst(str)	//Returns a string with the first character of str capitalized, if that character is alphabetic.
+	ucwords(str)	//Returns a string with the first character of each word in str capitalized, if that character is alphabetic.
 
 	strlen("Hello world!"); 
 	//returns the length of a string, in characters.
@@ -10,6 +23,13 @@
 	//If no match is found, it will return FALSE.
 	//The position of the string "world" in the example above is 6. 
 	//The reason that it is 6 (and not 7),is that the first character position in the string is 0, and not 1.
+
+	strcmp(str1, str2)	//Note that this comparison is case sensitive.
+	strcasecmp(str1, str2)	//Binary safe case-insensitive string comparison.
+	//Both returns < 0 if str1 is less than str2; > 0 if str1 is greater than str2, and 0 if they are equal.
+
+	array explode ($delimiter , $string [, int $limit ] )
+	//Returns an array of strings, each of which is a substring of string formed by splitting it on boundaries formed by the string delimiter.
 
 	define("GREETING", "Welcome to W3Schools.com!", true);
 	//it takes three parameters: The first parameter defines the name of the constant, 
@@ -50,6 +70,8 @@
 	arsort($age) //- sort associative arrays in descending order, according to the value
 	krsort($age) //- sort associative arrays in descending order, according to the key
 
+	htmlentities(str)	
+	htmlspecialchars(str)
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	//The $_SERVER["PHP_SELF"] is a super global variable that returns the filename of the currently executing script.
 	//The htmlspecialchars() function converts special characters to HTML entities.
@@ -142,4 +164,24 @@
 	$compname=odbc_result($rs,1);	//The code line below returns the value of the first field from the record:
 	$compname=odbc_result($rs,"CompanyName");	//The code line below returns the value of a field called "CompanyName":
 	odbc_close($conn);	// used to close an ODBC connection.
+
+	header('location: http://www.example.com/elsewhere.html');	//	redorection
+
+	if ($_SERVER['HTTPS']!=='on')
+	{
+			die("Must be a secure connection.");
+	}		//SSL avoid going to a web which was not encrypted. 
+
+	$a = <<< mark 	   
+	....
+	....
+	mark;
+	echo "$a";			//<<< Identifier tell the PHP parser that you are writing a heredoc now
+
+	printf(<<< mark
+		%s is %d years old.
+		mark
+		,"Fred",35);    
+
+	array_flip($array)	//returns an array in flip order, i.e. keys from array become values and values from array become keys.
 ?>
