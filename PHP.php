@@ -14,21 +14,34 @@
 
 	ucfirst(str)	//Returns a string with the first character of str capitalized, if that character is alphabetic.
 	ucwords(str)	//Returns a string with the first character of each word in str capitalized, if that character is alphabetic.
+	lcfirst(str)    ///Returns a string with the first character of str not capitalized, if that character is alphabetic.
 
 	strlen("Hello world!"); 
 	//returns the length of a string, in characters.
 
+	mixed str_word_count ( string $string [, int $format = 0 [, string $charlist ]] )
+	//Specify the return value of this function. The current supported values are:
+	//0 - returns the number of words found
+	//1 - returns an array containing all the words found inside the string
+	//2 - returns an associative array, where the key is the numeric position of the word inside the string and the value is the actual word itself
+		
 	strpos("Hello world!","world"); 
 	//search for a specified character or text within a string.
 	//If no match is found, it will return FALSE.
 	//The position of the string "world" in the example above is 6. 
-	//The reason that it is 6 (and not 7),is that the first character position in the string is 0, and not 1.
+	//The reason why it is 6 (and not 7) is that the first character position in the string is 0, and not 1.
+
+	string strip_tags(string $str [, string $allowable_tags ])
+	//This function tries to return a string with all NULL bytes, HTML and PHP tags stripped from a given str. It uses the same tag stripping state machine as the fgetss() function.
+	
+	string str_shuffle(string $str)
+	//Randomly shuffles a string.
 
 	strcmp(str1, str2)	//Note that this comparison is case sensitive.
 	strcasecmp(str1, str2)	//Binary safe case-insensitive string comparison.
 	//Both returns < 0 if str1 is less than str2; > 0 if str1 is greater than str2, and 0 if they are equal.
 
-	array explode ($delimiter , $string [, int $limit ] )
+	array explode($delimiter , $string [, int $limit ])
 	//Returns an array of strings, each of which is a substring of string formed by splitting it on boundaries formed by the string delimiter.
 
 	define("GREETING", "Welcome to W3Schools.com!", true);
@@ -61,6 +74,24 @@
 	$cars=array("Volvo","BMW","Toyota");
 	echo count($cars); 
 	//used to return the length (the number of elements) of an array.
+
+	number array_sum(array $array)
+	//returns the sum of values in an array.
+
+	array array_unique(array $array [, int $sort_flags = SORT_STRING ])
+	//Removes duplicate values from an array
+
+	bool in_array(mixed $needle, array $haystack [, bool $strict = FALSE ])
+	//Searches haystack for needle using loose comparison unless strict is set.
+
+	mixed array_search(mixed $needle, array $haystack [, bool $strict = false ])
+	//Searches the array for a given value and returns the corresponding key if successful
+
+	array array_merge(array $array1 [, array $... ])
+	//Merge one or more arrays
+
+	bool array_walk (array &$array, callable $callback [, mixed $userdata = NULL ])
+	//Apply a user function to every member of an array
 
 	$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
 	sort($age) //- sort arrays in ascending order
@@ -114,12 +145,11 @@
 	Send an Error Message by E-Mail:
 		//error handler function
 		function customError($errno, $errstr)
-		  {
-		  echo "<b>Error:</b> [$errno] $errstr<br>";
-		  echo "Webmaster has been notified";
-		  error_log("Error: [$errno] $errstr",1,
-		  "someone@example.com","From: webmaster@example.com");
-		  }
+		{
+			echo "<b>Error:</b> [$errno] $errstr<br>";
+			echo "Webmaster has been notified";
+			error_log("Error: [$errno] $errstr",1,"someone@example.com","From: webmaster@example.com");
+		}
 
 		//set error handler
 		set_error_handler("customError",E_USER_WARNING);
@@ -127,9 +157,9 @@
 		//trigger error
 		$test=2;
 		if ($test>1)
-		  {
-		  trigger_error("Value must be 1 or below",E_USER_WARNING);
-		  }
+		{
+		  	trigger_error("Value must be 1 or below",E_USER_WARNING);
+		}
 
 	filter_var()	//- Filters a single variable with a specified filter
 	filter_var_array()	//- Filter several variables with the same or different filters
@@ -156,6 +186,15 @@
 	$row = mysqli_fetch_array($result));	//Get the select results
 	mysqli_close($con);		// Close the connection 
 
+	$my_db = new mysqli('example.com','peter','abc123','my_db');	// Create connection
+	$sql = "...";   // SQL sth
+	$result = $my_db->query($sql);   // Execute query
+	while ($row = $result->fetch_assoc()){   //Get the select results
+		echo.....
+	}
+	$result->close();
+	$my_db->close();   // Close the connection 
+
 	$conn=odbc_connect('northwind','','');	//creates a connection to a DSN called northwind, with no username and no password
 	$sql="...";	// SQL sth
 	$rs=odbc_exec($conn,$sql);	//execute sql
@@ -172,9 +211,11 @@
 			die("Must be a secure connection.");
 	}		//SSL avoid going to a web which was not encrypted. 
 
+	array_flip($array)	//returns an array in flip order, i.e. keys from array become values and values from array become keys.
+	
 	$a = <<< mark 	   
-	....
-	....
+	sth here
+	sth here
 	mark;
 	echo "$a";			//<<< Identifier tell the PHP parser that you are writing a heredoc now
 
@@ -182,6 +223,4 @@
 		%s is %d years old.
 		mark
 		,"Fred",35);    
-
-	array_flip($array)	//returns an array in flip order, i.e. keys from array become values and values from array become keys.
 ?>
